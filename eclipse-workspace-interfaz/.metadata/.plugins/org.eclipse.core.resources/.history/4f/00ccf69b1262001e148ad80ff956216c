@@ -1,0 +1,125 @@
+package EjercicioRepaso6;
+
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+
+
+
+public class EjercicioRepaso6 {
+
+	private JFrame frame;
+	private JTextField textField;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					EjercicioRepaso6 window = new EjercicioRepaso6();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public EjercicioRepaso6() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel labelCiudad = new JLabel(" NUEVA CIUDAD:");
+		labelCiudad.setBounds(73, 54, 108, 14);
+		frame.getContentPane().add(labelCiudad);
+		
+		textField = new JTextField();
+		textField.setBounds(77, 119, 86, 20);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox.setBounds(213, 118, 81, 22);
+		frame.getContentPane().add(comboBox);
+		
+		JLabel labelDestinos = new JLabel("Destinos disponibles");
+		labelDestinos.setBounds(234, 54, 108, 14);
+		frame.getContentPane().add(labelDestinos);
+		
+		JButton limpiarBut = new JButton("LIMPIAR");
+		limpiarBut.setBounds(310, 101, 114, 23);
+		frame.getContentPane().add(limpiarBut);
+		
+		JButton seleccionarBut = new JButton("SELECCIONAR");
+		seleccionarBut.setBounds(310, 147, 114, 23);
+		frame.getContentPane().add(seleccionarBut);
+		
+		JLabel finalLabel = new JLabel("Ciudad seleccionada: ");
+		finalLabel.setEnabled(false);
+		finalLabel.setBounds(110, 200, 220, 14);
+		frame.getContentPane().add(finalLabel);
+		
+		KeyListener enter = new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					comboBox.addItem(textField.getText());
+					textField.setText(null);
+					comboBox.setSelectedItem(null);
+				}
+				
+				
+			}
+		};
+		
+		textField.addKeyListener(enter);
+		
+		ActionListener botonLimpio = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				comboBox.removeAllItems();
+				
+			}
+		};
+		
+		limpiarBut.addActionListener(botonLimpio);
+		
+		
+	}
+}

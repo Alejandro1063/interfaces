@@ -1,0 +1,84 @@
+package EjercicioRepaso1;
+
+import java.awt.EventQueue;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class EjercicioRepaso1 {
+
+	private JFrame frame;
+	private JTextField textField;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					EjercicioRepaso1 window = new EjercicioRepaso1();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public EjercicioRepaso1() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel labelEdad = new JLabel("Edad: ");
+		labelEdad.setBounds(88, 74, 46, 14);
+		frame.getContentPane().add(labelEdad);
+		
+		textField = new JTextField();
+		textField.setBounds(221, 71, 86, 20);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+	}
+	
+	KeyListener key = new KeyListener() {
+		
+		@Override
+		public void keyTyped(KeyEvent e) {
+			Character cara = e.getKeyChar();
+		if (Character.isDigit(cara) != true) {
+			e.consume();
+		}
+			
+		}
+		
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void keyPressed(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	};
+	
+}
