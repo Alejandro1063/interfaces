@@ -1,0 +1,23 @@
+package Ejercicio12;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+
+public class Pantalla2View extends View{
+	public Pantalla2View(AppController ap) {
+		super(ap);
+		setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Pantalla 2");
+		lblNewLabel.setBounds(114, 131, 126, 14);
+		add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("Ir a pantalla 3");
+		btnNewButton.setBounds(264, 193, 143, 23);
+		add(btnNewButton);
+	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5430617681923355797L;
+}

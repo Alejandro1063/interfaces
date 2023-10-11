@@ -1,0 +1,35 @@
+package EjemploCambioPantallas;
+import javax.swing.JLabel;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+
+public class Pantalla2View extends View{
+	public Pantalla2View(AppController ap) {
+		super(ap);
+		setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Pantalla 2");
+		lblNewLabel.setBounds(114, 131, 126, 14);
+		add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("Ir a pantalla 3");
+		btnNewButton.setBounds(264, 193, 143, 23);
+		add(btnNewButton);
+		btnNewButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ap.irAPantalla3();
+				
+			}
+		});
+	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5430617681923355797L;
+}

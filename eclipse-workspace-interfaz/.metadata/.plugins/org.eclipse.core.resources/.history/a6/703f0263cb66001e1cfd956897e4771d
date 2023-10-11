@@ -1,0 +1,38 @@
+package Ejercicio12;
+
+
+import javax.swing.JFrame;
+import javax.swing.JButton;
+
+import javax.swing.JTextField;
+
+public class Pantalla1 extends View{
+
+	public Pantalla1(AppController ap) {
+		super(ap);
+		
+		JFrame frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JButton btnNewButton = new JButton("Ir a pantalla1");
+		btnNewButton.setBounds(124, 73, 142, 23);
+		frame.getContentPane().add(btnNewButton);
+		btnNewButton.setEnabled(false);
+		
+		JButton btnNewButton_1 = new JButton("Ir a pantalla 2");
+		btnNewButton_1.setBounds(124, 132, 142, 23);
+		frame.getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Ir a pantalla3");
+		btnNewButton_2.setBounds(124, 190, 142, 23);
+		frame.getContentPane().add(btnNewButton_2);
+		
+		JTextField textField = new JTextField();
+		textField.setBounds(152, 30, 86, 20);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+	
+	}
+}

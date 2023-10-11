@@ -1,0 +1,94 @@
+package Ejercicio13;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+
+public class AppController {
+
+	private JFrame frame;
+
+	private Pantalla1 pantalla1;
+	private Pantalla2 pantalla2;
+	private Pantalla3 pantalla3;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AppController window = new AppController();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public AppController() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		pantalla1 = new Pantalla1(this);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(10, 11, 101, 22);
+		pantalla1.add(menuBar);
+		
+		JMenu mnNewMenu = new JMenu("Navegar");
+		menuBar.add(mnNewMenu);
+		
+		JMenuItem mntmIrAPantalla = new JMenuItem("Ir a pantalla 1");
+		mnNewMenu.add(mntmIrAPantalla);
+		
+		JMenuItem mntmIrAPantalla_1 = new JMenuItem("Ir a pantalla 2");
+		mnNewMenu.add(mntmIrAPantalla_1);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Ir a pantalla 3");
+		mnNewMenu.add(mntmNewMenuItem);
+		
+		JMenu mnNewMenu_1 = new JMenu("Salir");
+		menuBar.add(mnNewMenu_1);
+		
+		JMenuItem mntmSalir = new JMenuItem("Salir");
+		mnNewMenu_1.add(mntmSalir);
+		pantalla2 = new Pantalla2(this);
+		pantalla3 = new Pantalla3(this);
+		irAPantalla1("");
+	}
+
+	public void irAPantalla1(String mensaje) {
+		frame.setContentPane(pantalla1);
+		pantalla1.cambiarTexto(mensaje);
+		frame.revalidate();
+
+	}
+
+	public void irAPantalla2(String mensaje) {
+		frame.setContentPane(pantalla2);
+		frame.revalidate();
+		pantalla2.cambiarTexto(mensaje);
+	}
+
+	public void irAPantalla3(String mensaje) {
+		frame.setContentPane(pantalla3);
+		frame.revalidate();
+		pantalla3.cambiarTexto(mensaje);
+	}
+}

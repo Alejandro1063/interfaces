@@ -1,0 +1,10 @@
+package Ejercicio12;
+
+public class Pantalla1View extends View{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5430617681923355797L;
+
+}

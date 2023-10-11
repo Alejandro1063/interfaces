@@ -1,0 +1,48 @@
+package Ejercicio12;
+
+
+import javax.swing.JLabel;
+import javax.swing.JButton;
+
+import javax.swing.JTextField;
+
+public class Pantalla2 extends View{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1333519284598441100L;
+	private JTextField textField;
+
+	public Pantalla2(AppController ap) {
+		
+		super(ap);
+		setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Pantalla 1");
+		lblNewLabel.setBounds(177, 25, 86, 14);
+		add(lblNewLabel);
+		
+		textField = new JTextField();
+		textField.setBounds(159, 64, 86, 20);
+		add(textField);
+		textField.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Boton 1");
+		btnNewButton.setBounds(159, 124, 89, 23);
+		add(btnNewButton);
+		btnNewButton.setEnabled(false);
+		
+		JButton btnNewButton_1 = new JButton("Boton 2");
+		btnNewButton_1.setBounds(159, 177, 89, 23);
+		add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Boton 3");
+		btnNewButton_2.setBounds(156, 237, 89, 23);
+		add(btnNewButton_2);
+		
+		
+		
+	
+	}
+}

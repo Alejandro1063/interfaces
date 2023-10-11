@@ -1,0 +1,19 @@
+package Ejercicio12;
+
+import javax.swing.JPanel;
+
+public abstract class View extends JPanel{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8301692346736170955L;
+
+	
+protected AppController app;
+	
+	public View(AppController ap) {
+		this.app = ap;
+		
+	}
+}

@@ -118,7 +118,7 @@ public class EjercicioRepaso6 {
 			public void actionPerformed(ActionEvent e) {
 				comboBox.removeAllItems();
 				seleccionarBut.setEnabled(false);
-					finalLabel.setText("");
+				finalLabel.setText("");
 				
 			}
 		};

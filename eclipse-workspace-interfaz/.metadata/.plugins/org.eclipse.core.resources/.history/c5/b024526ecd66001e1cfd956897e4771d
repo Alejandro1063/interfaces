@@ -1,0 +1,48 @@
+package Ejercicio12;
+
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+
+import javax.swing.JTextField;
+
+public class Pantalla3 extends View{
+
+
+	private static final long serialVersionUID = 1L;
+
+	public Pantalla3(AppController ap) {
+		super(ap);
+		setLayout(null);
+
+		JFrame frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JButton btnNewButton = new JButton("Ir a pantalla1");
+		btnNewButton.setBounds(124, 73, 142, 23);
+		frame.getContentPane().add(btnNewButton);
+		
+		
+		JButton btnNewButton_1 = new JButton("Ir a pantalla 2");
+		btnNewButton_1.setBounds(124, 132, 142, 23);
+		frame.getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Ir a pantalla3");
+		btnNewButton_2.setBounds(124, 190, 142, 23);
+		frame.getContentPane().add(btnNewButton_2);
+		btnNewButton.setEnabled(false);
+		
+		JTextField textField = new JTextField();
+		textField.setBounds(152, 30, 86, 20);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("Pantalla3");
+		lblNewLabel.setBounds(163, 32, 62, 14);
+		frame.getContentPane().add(lblNewLabel);
+	}
+	}
+

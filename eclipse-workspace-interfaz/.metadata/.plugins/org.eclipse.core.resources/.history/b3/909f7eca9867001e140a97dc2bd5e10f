@@ -1,0 +1,15 @@
+package Ejercicio14;
+
+public class PantallaBienvenida extends View{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 936649860877894710L;
+
+	public PantallaBienvenida(AppController ap) {
+		super(ap);
+		// TODO Auto-generated constructor stub
+	}
+
+}

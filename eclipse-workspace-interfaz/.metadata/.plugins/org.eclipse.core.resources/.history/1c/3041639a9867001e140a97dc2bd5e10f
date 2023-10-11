@@ -1,0 +1,10 @@
+package Ejercicio14;
+
+public class PantallaBienvenida extends View{
+
+	public PantallaBienvenida(AppController ap) {
+		super(ap);
+		// TODO Auto-generated constructor stub
+	}
+
+}
