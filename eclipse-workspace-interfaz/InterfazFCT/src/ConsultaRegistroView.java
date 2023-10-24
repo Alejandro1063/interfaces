@@ -4,8 +4,8 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ConsultaRegistroView extends View{
-	public ConsultaRegistroView(AppController app) {
-		super(app);
+	public ConsultaRegistroView(AppController appController) {
+		super(appController);
 		setLayout(null);
 		
 		table = new JTable();

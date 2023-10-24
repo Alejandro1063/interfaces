@@ -23,10 +23,5 @@
 		<artifactId>Proyecto-fct</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-			<groupId>SwingEjemplos</groupId>
-			<artifactId>SwingEjemplos</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
 </project>

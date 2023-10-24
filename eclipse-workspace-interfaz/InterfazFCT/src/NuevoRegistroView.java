@@ -13,9 +13,9 @@ import javax.swing.JTextField;
 
 public class NuevoRegistroView extends View{
 
-	public NuevoRegistroView(AppController app) {
+	public NuevoRegistroView(AppController appController) {
 		
-		super(app);
+		super(appController);
 		setLayout(null);
 		
 		JLabel fechaLabel = new JLabel("Fecha:");

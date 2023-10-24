@@ -1,4 +1,5 @@
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import java.awt.event.ActionEvent;
@@ -9,64 +10,70 @@ import javax.swing.JPasswordField;
 
 public class LoginView extends View {
 
-	public LoginView(AppController app) {
-		super(app);
+	private String pass;
+	
+	public LoginView(AppController appController) {
+		super(appController);
 		setLayout(null);
 		
-		JLabel EmailLabel = new JLabel("Email:");
-		EmailLabel.setBounds(83, 79, 46, 14);
-		add(EmailLabel);
+		JLabel emailLabel = new JLabel("Email:");
+		emailLabel.setBounds(83, 79, 46, 14);
+		add(emailLabel);
 		
 		textFieldEmail = new JTextField();
 		textFieldEmail.setBounds(76, 104, 173, 20);
 		add(textFieldEmail);
 		textFieldEmail.setColumns(10);
 		
-		JLabel ContraseñaLabel = new JLabel("Contraseña:");
-		ContraseñaLabel.setBounds(83, 137, 142, 14);
-		add(ContraseñaLabel);
+		JLabel contraseñaLabel = new JLabel("Contraseña:");
+		contraseñaLabel.setBounds(83, 137, 142, 14);
+		add(contraseñaLabel);
 		
-		JButton ButtonEntrar = new JButton("ENTRAR");
-		ButtonEntrar.setBounds(136, 211, 89, 23);
-		add(ButtonEntrar);
+		JButton buttonEntrar = new JButton("ENTRAR");
+		buttonEntrar.setBounds(136, 211, 89, 23);
+		add(buttonEntrar);
 		
-		JButton ButtonSolicitarAcceso = new JButton("SOLICITAR ACCESO");
-		ButtonSolicitarAcceso.setBounds(210, 304, 193, 23);
-		add(ButtonSolicitarAcceso);
+		JButton buttonSolicitarAcceso = new JButton("SOLICITAR ACCESO");
+		buttonSolicitarAcceso.setBounds(210, 304, 193, 23);
+		add(buttonSolicitarAcceso);
 		
 		
-		JButton ButtonSalir = new JButton("SALIR");
-		ButtonSalir.setBounds(424, 304, 86, 23);
-		add(ButtonSalir);
+		JButton buttonSalir = new JButton("SALIR");
+		buttonSalir.setBounds(424, 304, 86, 23);
+		add(buttonSalir);
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(83, 179, 165, 21);
 		add(passwordField);
-	
-	
+		
+		String error = "Uno o los dos campos de usuario y contraseña están vacíos";
 	    ActionListener login = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == ButtonEntrar)
-			app.irABienvenidaView();
+		pass = new String (passwordField.getPassword());
+		if(e.getSource() == buttonEntrar)
+			if(!textFieldEmail.getText().isEmpty() && !pass.isEmpty()) {
+				appController.iniciarSesion(textFieldEmail.getText(), pass);
+			}
+			else 
+			JOptionPane.showMessageDialog(null, error);
+			textFieldEmail.setText("");
+			passwordField.setText("");
 		
-		if(e.getSource() == ButtonSolicitarAcceso)
+		if(e.getSource() ==buttonSolicitarAcceso)
 		{
-			app.irASolicitarAccesoView();
+			appController.irASolicitarAccesoView();
 		}
-		if(e.getSource() == ButtonSalir) {
-			app.salir();
+		if(e.getSource() == buttonSalir) {
+			appController.salir();
 		}
 		}
 		};
-		ButtonEntrar.addActionListener(login);
-		ButtonSolicitarAcceso.addActionListener(login);
-		ButtonSalir.addActionListener(login);
-
+		buttonEntrar.addActionListener(login);
+		buttonSolicitarAcceso.addActionListener(login);
+		buttonSalir.addActionListener(login);
 	
 	}
-
-
 	/**
 	 * 
 	 */

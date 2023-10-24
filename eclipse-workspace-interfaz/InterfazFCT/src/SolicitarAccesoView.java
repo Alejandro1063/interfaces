@@ -26,9 +26,12 @@ public class SolicitarAccesoView extends View {
 	private JButton aceptarButton;
 	private JButton cancelarButton;
 	private JComboBox<String> cicloComboBox;
+	private String pass1;
+	private String pass2;
+	
 
-	public SolicitarAccesoView(AppController app) {
-		super(app);
+	public SolicitarAccesoView(AppController appController) {
+		super(appController);
 
 		setLayout(null);
 
@@ -95,29 +98,38 @@ public class SolicitarAccesoView extends View {
 		passwordFieldRepetir.setBounds(168, 176, 119, 16);
 		add(passwordFieldRepetir);
 
+
+		
 		ActionListener login = new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
+				pass1 = new String (passwordField.getPassword());
+				pass2 = new String (passwordFieldRepetir.getPassword());
+				
 				if (e.getSource() == aceptarButton) {
 					if (validardatos() == true){
 						Usuario usuario = new Usuario();
 						usuario.setEmail(emailTextField.getText());
-						usuario.setPassword(passwordField.getPassword().toString());
+						usuario.setPassword(pass1);
 						usuario.setNombre(nombreTextField.getText());
 						usuario.setApellidos(apellidosTextField.getText());
 						usuario.setCiclo(cicloComboBox.getSelectedItem().toString());
 						usuario.setActivo(true);
 						
-						app.altaUsuario(usuario);
-						app.irALoginView();
+						appController.altaUsuario(usuario);
 						
 						emailTextField.setText("");
 						passwordField.setText("");
 						nombreTextField.setText("");
 						apellidosTextField.setText("");
+						passwordFieldRepetir.setText("");
 						cicloComboBox.setSelectedIndex(-1);
+						
+						appController.irALoginView();
+						
+
 					} else {
 
 						String error = "Error al introducir los datos.";
@@ -129,7 +141,15 @@ public class SolicitarAccesoView extends View {
 				}
 				if (e.getSource() == cancelarButton) {
 					
-					app.irALoginView();
+					
+					emailTextField.setText("");
+					passwordField.setText("");
+					nombreTextField.setText("");
+					apellidosTextField.setText("");
+					passwordFieldRepetir.setText("");
+					cicloComboBox.setSelectedIndex(-1);
+					
+					appController.irALoginView();
 				}
 			}
 
@@ -139,8 +159,8 @@ public class SolicitarAccesoView extends View {
 	}
 	public Boolean validardatos() {
 		
-		if (String.valueOf(passwordField.getPassword()).equals(
-				String.valueOf(passwordFieldRepetir.getPassword())) && !emailLabel.getText().isEmpty()
+		if ((pass1.equals(
+				pass2)) && !emailLabel.getText().isEmpty()
 				&& !contraseñaLabel.getText().isEmpty() && !repetirLabel.getText().isEmpty()
 				&& !nombreLabel.getText().isEmpty() && !apellidosLabel.getText().isEmpty()
 				&& cicloComboBox.getSelectedItem() != null) {

@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 import ceu_fct.exception.AutenticationException;
 import ceu_fct.exception.UsuarioNoExisteException;
@@ -29,6 +30,12 @@ public class AppController {
 	private JMenuItem menuRegistros;
 	private JMenuItem itemCrearNuevoRegistro;
 	private JMenuItem itemConsultarregistros;
+	private Usuario user;
+
+	public Usuario getUser() {
+	
+		return user;
+	}
 
 	/**
 	 * Launch the application.
@@ -50,6 +57,7 @@ public class AppController {
 	 * Create the application.
 	 */
 	public AppController() {
+		
 		initialize();
 	}
 
@@ -57,6 +65,7 @@ public class AppController {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frame = new JFrame();
 		frame.setBounds(250, 200, 600, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -127,6 +136,7 @@ public class AppController {
 	public void irABienvenidaView() {
 		frame.setContentPane(bienvenida);
 		menuBar.setVisible(true);
+		bienvenida.mensajeBien();
 		frame.revalidate();
 
 	}
@@ -137,18 +147,18 @@ public class AppController {
 	}
 	public void iniciarSesion(String usuario, String contra) {
 		UsuarioService userS = new UsuarioService();
-		try {
-			userS.loginUsuario(usuario, contra);
-		} catch (UsuarioNoExisteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (AutenticationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UsuarioServiceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+			try {
+				user = userS.loginUsuario(usuario, contra);
+				
+				irABienvenidaView();
+			} catch (UsuarioNoExisteException | AutenticationException | UsuarioServiceException e) {
+				String error = "Error al introducir el usuario y contraseña.";
+				JOptionPane.showMessageDialog(null, error);
+				e.printStackTrace();
+			}
+			
+		
 	}
 	public void altaUsuario(Usuario user) {
 		UsuarioService userS = new UsuarioService();
